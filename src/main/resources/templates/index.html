@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Hello World</title>
+</head>
+<body>
+<h1>List of students:</h1>
+<ul>
+    <li th:each="student : ${students}">
+        <span th:text="${student.value.getFirstName() + ' '
+    + student.value.getLastName() + ' ' + student.value.getAge()}"></span>
+        <a th:href="${'/detail?id=' + student.value.getId()}">View</a>
+        <a th:href="${'/delete?id=' + student.value.getId()}">Delete</a>
+        <a th:href="${'/update?id=' + student.value.getId()}">Update</a>
+    </li>
+</ul>
+<a href="/add">Add New Student</a>
+<p th:text="${'Hello ' + message}"></p>
+</body>
+</html>
