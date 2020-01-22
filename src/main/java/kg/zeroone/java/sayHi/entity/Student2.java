@@ -1,16 +1,16 @@
-package kg.zeroone.java.sayHi;
+package kg.zeroone.java.sayHi.entity;
 
-public class Student {
+public class Student2 {
     private int id;
     private String firstName;
     private String lastName;
     private int age;
 
-    public Student() {
+    public Student2() {
 
     }
 
-    public Student(int id, String firstName, String lastName, int age) {
+    public Student2(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

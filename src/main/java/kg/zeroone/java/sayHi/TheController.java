@@ -1,5 +1,6 @@
 package kg.zeroone.java.sayHi;
 
+import kg.zeroone.java.sayHi.entity.Student;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,8 @@ public class TheController {
     String title;
 
     public Map<Integer, Student> studentMap = new HashMap<Integer, Student>() {{
-        put(1, new Student(1,"John", "Doe", 20));
-        put(2, new Student(2,"Asan", "Uson", 18));
+        put(1, new Student("John", "Doe"));
+        put(2, new Student("Asan", "Uson"));
     }};
 
     @GetMapping("/home")
@@ -66,7 +67,7 @@ public class TheController {
 
     @PostMapping("/add")
     public String addStdPosted(@ModelAttribute Student student, Model model) {
-        studentMap.put(student.getId(), student);
+        studentMap.put((int) student.getId(), student);
         model.addAttribute("title", title);
         model.addAttribute("student", student);
         model.addAttribute("message", "Added Student Details:");
@@ -94,7 +95,7 @@ public class TheController {
     @PostMapping("/update")
     public String updateStdPosted(Model model, @ModelAttribute Student student){
         studentMap.remove(student.getId());
-        studentMap.put(student.getId(),student);
+        studentMap.put((int) student.getId(),student);
         model.addAttribute("title", title);
         model.addAttribute("student", student);
         model.addAttribute("message", "Updated Student Details:");
